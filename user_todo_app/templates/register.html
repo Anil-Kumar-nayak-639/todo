@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block name %} SignUp {% endblock %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5 p-3 mb-2 bg-light text-dark">
+  <center><h1>Register on TODO!</h1></center>
+  <div class="row">
+    <div class="col-lg-6">
+      {% if messages %}
+        {% for mes in messages %}
+          <div class="alert alert-primary alert-dismissible fade show" role="alert">
+            {{mes}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        {% endfor %}
+      {% endif %}
+      <form action="" method="POST">
+        {% csrf_token %}
+        {{register_form|crispy}}
+        <br>
+        <button type="submit" class="btn btn-primary mt-5">Register</button>
+      </form>
+    </div>
+    <div class="col-lg-6">
+      <img src="{% static 'images/note-5.jpg' %}" style="height: 600px; width: 550px;" class="rounded" alt="">
+    </div>
+  </div>
+</div>
+{% endblock %}

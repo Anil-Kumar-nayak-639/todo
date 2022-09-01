@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block name %} Update {% endblock %}
+{% block content %}
+
+<div class="container" style="margin-top: 50px;">
+  {% if list_obj.manage == request.user %}
+    <form method="POST">
+        {% csrf_token %}
+        <div class="form-group">
+          <label>Update task</label>
+          <input type="text" class="form-control" name="list" placeholder="{{list_obj.list}}" value="{{list_obj.list}}">
+          <input type="hidden" name="done" value="{{list_obj.done}}">
+          <button type="submit" class="btn btn-primary" style="margin-top: 20px;">Update task</button>
+        </div>
+    </form>
+  {% else %}
+    <h1>Action Restricted</h1>
+
+  {% endif %}
+</div>
+
+{% endblock %}
