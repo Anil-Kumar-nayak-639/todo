@@ -5,3 +5,7 @@ class todolist(models.Model):
     manage = models.ForeignKey(User,on_delete=models.CASCADE,default=None)
     list=models.CharField(max_length=200)
     done=models.BooleanField(default=False)
+    
+
+    def __str__(self):
+        return self.manage
